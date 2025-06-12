@@ -1,13 +1,11 @@
 import {
   FaCalendarAlt,
-  
   FaHeart,
   FaSignInAlt,
   FaSignOutAlt,
 } from "react-icons/fa";
 import Header from "../components/Header";
 import { Link, useParams } from "react-router-dom";
-
 
 import {
   viewACampApi,
@@ -17,15 +15,13 @@ import {
   addReviewApi,
   getReviewApi,
 } from "../../services/allApi";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { serverUrl } from "../../services/serverUrl";
 import { FaLocationDot } from "react-icons/fa6";
 import { loadStripe } from "@stripe/stripe-js";
 import { toast, ToastContainer } from "react-toastify";
 
-
 export default function CampSpotDetailPage() {
- 
   // booking capacity check
   const [isFullyBooked, setIsFullyBooked] = useState(false);
 
@@ -87,7 +83,7 @@ export default function CampSpotDetailPage() {
       };
 
       const result = await addbookingApi(reqBody, reqHeader);
-      //console.log(result);
+      console.log(result);
 
       // store session id from result
       const sessionId = result.data.sessionId;
@@ -103,7 +99,7 @@ export default function CampSpotDetailPage() {
     }
   };
 
-  const wishListLoader = async() =>{
+  const wishListLoader = async () => {
     const campId = viewCampDetails._id;
 
     const reqHeader = {
@@ -112,18 +108,17 @@ export default function CampSpotDetailPage() {
 
     const result = await WishlistApi({ campId }, reqHeader);
     const da = result.data;
-    console.log({da})
+    console.log({ da });
 
     if (result.status == 200) {
-     const updatedWishlist = result.data.wishlist;
+      const updatedWishlist = result.data.wishlist;
       console.log(updatedWishlist);
-      
 
-     (updatedWishlist.includes(campId)) ?
-        setIsWishlisted(true) :
-         setIsWishlisted(false) ;   
+      updatedWishlist.includes(campId)
+        ? setIsWishlisted(true)
+        : setIsWishlisted(false);
     }
-  }
+  };
 
   // wishlist
   const handleWishlist = async () => {
@@ -139,7 +134,6 @@ export default function CampSpotDetailPage() {
     if (result.status == 200) {
       const updatedWishlist = result.data.wishlist;
       console.log(updatedWishlist);
-      
 
       if (updatedWishlist.includes(campId)) {
         toast.success("Added to wishlist");
@@ -229,7 +223,7 @@ export default function CampSpotDetailPage() {
   console.log(reviews);
 
   useEffect(() => {
-    console.log({isWishlisted})
+    console.log({ isWishlisted });
     viewCamp(id);
 
     if (sessionStorage.getItem("token")) {
@@ -240,16 +234,12 @@ export default function CampSpotDetailPage() {
 
   // Load reviews when camp details are loaded
   useEffect(() => {
-   
     if (viewCampDetails._id) {
       getReviews();
-       wishListLoader();
-     
+      wishListLoader();
     }
   }, [viewCampDetails._id]);
 
- 
- 
   //  Booking capacity check (run ONLY when date or campId changes)
   useEffect(() => {
     if (
@@ -291,8 +281,7 @@ export default function CampSpotDetailPage() {
 
         {/* Details  */}
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 items-start  ">
-          <div  className="shadow rounded relative p-4 md:p-8">
-           
+          <div className="shadow rounded relative p-4 md:p-8">
             {/* Left - Spot Details */}
             <div className="space-y-4 mb-8 ">
               <h1 className="text-3xl font-bold flex justify-between items-center">
@@ -342,7 +331,7 @@ export default function CampSpotDetailPage() {
               </div>
             </div>
 
-             <div className=" mb-8 md:left-37 bg-[#ffffff] text-gray-900 rounded-xl flex   items-center py-4 px-4  gap-8  ">
+            <div className=" mb-8 md:left-37 bg-[#ffffff] text-gray-900 rounded-xl flex   items-center py-4 px-4  gap-8  ">
               {/* Best Time */}
               <div className="flex flex-col border border-gray-200 rounded-xl py-8 px-4 items-center gap-4">
                 <FaCalendarAlt className="md:text-xl" />
@@ -352,10 +341,6 @@ export default function CampSpotDetailPage() {
                 </div>
               </div>
 
-
-
-              
-
               {/* Check-in */}
               <div className="flex flex-col border border-gray-200 py-8 px-4 rounded-xl items-center gap-4">
                 <FaSignInAlt className="md:text-xl" />
@@ -364,8 +349,6 @@ export default function CampSpotDetailPage() {
                   <p className="font-semibold">1:00 PM</p>
                 </div>
               </div>
-
-              
 
               {/* Check-out */}
               <div className="flex flex-col border border-gray-200 py-8 rounded-xl px-4 items-center gap-4">
@@ -434,7 +417,11 @@ export default function CampSpotDetailPage() {
                   className="bg-white flex gap-4 items-center shadow p-4 mt-6 rounded-xl"
                 >
                   <div className="">
-                    <img src="https://avatar.iran.liara.run/public/49" alt="" className="w-20 rounded-full" />
+                    <img
+                      src="https://avatar.iran.liara.run/public/49"
+                      alt=""
+                      className="w-20 rounded-full"
+                    />
                   </div>
 
                   <div>
