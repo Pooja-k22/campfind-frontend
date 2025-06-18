@@ -112,27 +112,7 @@ function UserProfile() {
               >
                 Booking
               </button>
-              <button
-                onClick={() => setActiveTab("property")}
-                className={
-                  activeTab === "property"
-                    ? "bg-orange-500 text-white rounded-full font-bold px-2 md:px-3 py-2"
-                    : "text-orange-500 border border-orange-500 bg-white rounded-full px-2 md:px-3 py-2"
-                }
-              >
-                Property
-              </button>
 
-              <button
-                onClick={() => setActiveTab("reservation")}
-                className={
-                  activeTab === "reservation"
-                    ? "bg-orange-500 text-white rounded-full font-bold  px-2 md:px-3 py-2"
-                    : "text-orange-500 border border-orange-500 bg-white rounded-full px-2 md:px-3 py-2"
-                }
-              >
-                Reservation
-              </button>
               <button
                 onClick={() => setActiveTab("wishlist")}
                 className={
@@ -181,8 +161,7 @@ function UserProfile() {
                   )}
                 </div>
               )}
-              {activeTab === "property" && <PropertyList />}
-              {activeTab === "reservation" && <ReservationList />}
+
               {activeTab === "wishlist" && <Wishlist />}
             </div>
           </div>

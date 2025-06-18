@@ -41,7 +41,7 @@ function PropertyList() {
 
   return (
     <>
-      <div className="p-4 w-full ">
+      <div className="p-4 md:px-15 w-full ">
         {camp?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3  gap-4">
             {camp?.map((item) => (
@@ -49,7 +49,7 @@ function PropertyList() {
                 <img
                   src={item?.imageUrl}
                   alt="no image"
-                  className="w-full h-35 object-cover"
+                  className="w-full h-45 object-cover"
                 />
                 <div className="p-4">
                   <h3 className="text-sm font-semibold text-gray-800">
@@ -88,7 +88,7 @@ function PropertyList() {
             ))}
           </div>
         ) : (
-          <p className=" text-gray-700 text-bold text-2xl">
+          <p className=" text-gray-700 text-bold text-center text-2xl">
             Not Host Anything!
           </p>
         )}

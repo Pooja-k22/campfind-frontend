@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast, ToastContainer } from "react-toastify";
@@ -155,12 +155,12 @@ function SpotAdding() {
   }, []);
   return (
     <>
-      <Header />
-      <div className=" md:mt-18 md:grid grid-cols-[1fr_6fr_1fr] bg-gray-50">
+     
+      <div className="  md:grid grid-cols-[1fr_6fr_1fr] bg-gray-50">
         <div></div>
 
-        <div className="bg-gray-100 rounded-xl px-6 pb-6 shadow-md">
-          <h1 className="text-3xl my-6 font-bold bg-[#005d50] p-4 text-white ">
+        <div className="bg-gray-100 rounded-xl pt-1 px-6 pb-6 shadow-md">
+          <h1 className="text-3xl my-6  font-bold bg-[#012b07] p-4 text-[#f6fbed] ">
             Publish Your Place
           </h1>
           <form action="">

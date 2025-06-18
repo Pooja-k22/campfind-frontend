@@ -142,7 +142,7 @@ function Header() {
             ) : (
               <div className=" flex items-center gap-3">
                 {/* when login */}
-                <Link to={"/spot-adding"}>
+                <Link to={"/host-dashboard"}>
                   <p className="text-lg font-medium text-gray-700 hover:text-orange-700   px-3 ">
                     Become A Host
                   </p>
@@ -173,7 +173,7 @@ function Header() {
                       </Link>
 
                       <Link
-                        to="/spot-adding"
+                        to="/host-dashboard"
                         className="block px-4 py-2 text-sm hover:bg-gray-100"
                       >
                         Become A Host

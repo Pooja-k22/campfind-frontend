@@ -24,6 +24,7 @@ import Preloader from "./components/Preloader";
 import Pagenotefound from "./pages/Pagenotefound";
 import Paymenterror from "./users/pages/Paymenterror";
 import Paymentsuccess from "./users/pages/Paymentsuccess";
+import Hostdashboard from "./users/pages/Hostdashboard";
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="/reserve" element={<ReservationList />} />
         <Route path="/property" element={<PropertyList />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/host-dashboard" element={<Hostdashboard />} />
 
          <Route path="/payment-error" element={<Paymenterror />} />
           <Route path="/payment-success" element={<Paymentsuccess />} />

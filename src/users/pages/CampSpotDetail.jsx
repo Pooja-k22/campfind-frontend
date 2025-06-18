@@ -14,6 +14,7 @@ import {
   checkCapacityApi,
   addReviewApi,
   getReviewApi,
+  getWishlistApi,
 } from "../../services/allApi";
 import { useEffect, useState } from "react";
 import { serverUrl } from "../../services/serverUrl";
@@ -99,28 +100,7 @@ export default function CampSpotDetailPage() {
     }
   };
 
-  const wishListLoader = async () => {
-    const campId = viewCampDetails._id;
-
-    const reqHeader = {
-      Authorization: `Bearer ${token}`,
-    };
-
-    const result = await WishlistApi({ campId }, reqHeader);
-    const da = result.data;
-    console.log({ da });
-
-    if (result.status == 200) {
-      const updatedWishlist = result.data.wishlist;
-      console.log(updatedWishlist);
-
-      updatedWishlist.includes(campId)
-        ? setIsWishlisted(true)
-        : setIsWishlisted(false);
-    }
-  };
-
-  // wishlist
+  //  wishlist toogle
   const handleWishlist = async () => {
     const campId = viewCampDetails._id;
 
@@ -137,13 +117,32 @@ export default function CampSpotDetailPage() {
 
       if (updatedWishlist.includes(campId)) {
         toast.success("Added to wishlist");
-        setIsWishlisted(true);
+        setIsWishlisted(result.data.isWishlisted);
       } else {
         toast.success("Removed from wishlist");
-        setIsWishlisted(false);
+        setIsWishlisted(result.data.isWishlisted);
       }
     } else {
       toast.error("Something went wrong");
+    }
+  };
+
+  // get wishlist
+  const getWishlist = async (token) => {
+    const reqHeader = {
+      Authorization: `Bearer ${token}`,
+    };
+    const result = await getWishlistApi(reqHeader);
+    //console.log(result);
+    if (result.status == 200) {
+      const wishlistArray = result.data.wishlist;
+      // setWishlist(wishlistArray);
+
+      if (wishlistArray.some((camp) => camp._id === viewCampDetails._id)) {
+        setIsWishlisted(true); // red heart
+      } else {
+        setIsWishlisted(false); // gray heart
+      }
     }
   };
 
@@ -236,7 +235,6 @@ export default function CampSpotDetailPage() {
   useEffect(() => {
     if (viewCampDetails._id) {
       getReviews();
-      wishListLoader();
     }
   }, [viewCampDetails._id]);
 
@@ -251,6 +249,13 @@ export default function CampSpotDetailPage() {
     }
     // handleWishlist()
   }, [viewCampDetails._id, bookingDetails.checkInDate, bookingDetails.guests]);
+
+  // get wishlist
+  useEffect(() => {
+    if (token && viewCampDetails._id) {
+      getWishlist(token);
+    }
+  }, [token, viewCampDetails._id]);
 
   return (
     <>

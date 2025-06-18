@@ -56,7 +56,7 @@ function HomePage() {
   // navigate starthosting
   const startHosting = () => {
     if (token) {
-      navigate("/spot-adding");
+      navigate("/host-dashboard");
     } else {
       navigate("/login");
     }

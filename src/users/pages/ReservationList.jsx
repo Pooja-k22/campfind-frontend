@@ -65,7 +65,7 @@ function ReservationList() {
               </div>
             ))
           ) : (
-            <p className=" text-bold text-gray-700 text-2xl">
+            <p className=" text-bold text-center text-gray-700 text-2xl">
               No Reservation yet.
             </p>
           )}
