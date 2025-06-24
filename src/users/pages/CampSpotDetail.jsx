@@ -154,7 +154,7 @@ export default function CampSpotDetailPage() {
     if (!checkInDate || !guests || !campId) return;
 
     //  Check if guests exceed maxGuest frontend
-    if (parseInt(guests) > viewCampDetails.maxGuest) {
+    if (guests > viewCampDetails.maxGuest) {
       setIsFullyBooked(true);
       toast.error(
         `Only ${viewCampDetails.maxGuest} guests allowed for this camp`

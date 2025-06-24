@@ -100,6 +100,18 @@ export const getReviewApi = async(campId)=>{
     return await commonApi('GET', `${serverUrl}/get-review/${campId}`)
 }
 
+// add blog
+export const addBlogApi = async(reqBody,reqHeader)=>{
+       return await commonApi('POST', `${serverUrl}/add-blog`,reqBody,reqHeader)
+ 
+}
+
+// get blog
+export const getBlogsApi = async()=>{
+       return await commonApi('GET', `${serverUrl}/get-blog`)
+ 
+}
+
 
 // ------------------------------------------ADMIN--------------------------------------------------------------
 

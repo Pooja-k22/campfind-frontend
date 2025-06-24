@@ -25,6 +25,7 @@ import Pagenotefound from "./pages/Pagenotefound";
 import Paymenterror from "./users/pages/Paymenterror";
 import Paymentsuccess from "./users/pages/Paymentsuccess";
 import Hostdashboard from "./users/pages/Hostdashboard";
+import BlogList from "./users/pages/BlogList";
 
 function App() {
 
@@ -44,6 +45,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/campspot-details/:id" element={<CampSpotDetail />} />
         <Route path="/about" element={<About />} />
+                <Route path="/blog" element={<BlogList />} />
+
         
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/spot-adding" element={<SpotAdding />} />

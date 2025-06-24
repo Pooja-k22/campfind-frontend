@@ -68,6 +68,9 @@ function Header() {
             <Link to={"/about"}>
               <p className="hover:text-green-600">About</p>
             </Link>
+             <Link to={"/blog"}>
+              <p className="hover:text-green-600">Blog</p>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -212,6 +215,9 @@ function Header() {
           <Link to="/about" className="block text-gray-700">
             About
           </Link>
+           <Link to={"/blog"}>
+              <p className="hover:text-green-600">Blog</p>
+            </Link>
 
           <hr className="my-2" />
           <Link to="/login" className="block text-orange-600 font-medium">

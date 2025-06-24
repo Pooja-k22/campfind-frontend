@@ -32,7 +32,7 @@ function ReservationList() {
 
   return (
     <>
-      <div className=" bg-white px-6 py-4 ">
+      <div className=" bg-white px-6 py-4 min-h-screen ">
         <div className="space-y-4">
           {reservation.length > 0 ? (
             reservation.map((item) => (

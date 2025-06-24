@@ -72,7 +72,7 @@ function AdminDashboard() {
               />
 
               <div className="flex flex-col justify-center items-start md:items-center">
-                <p className="text-lg mb-2">Total Number of Hosts</p>
+                <p className="text-lg mb-2">Total Number of Bookings</p>
                 <h2 className="text-3xl font-semibold">100+</h2>
               </div>
             </div>

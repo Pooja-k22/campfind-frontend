@@ -41,7 +41,7 @@ function PropertyList() {
 
   return (
     <>
-      <div className="p-4 md:px-15 w-full ">
+      <div className="p-4 md:px-15 w-full min-h-screen ">
         {camp?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3  gap-4">
             {camp?.map((item) => (

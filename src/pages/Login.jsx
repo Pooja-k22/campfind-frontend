@@ -9,12 +9,15 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { googleLoginApi, loginApi } from "../services/allApi";
-import { GoogleLogin } from '@react-oauth/google';
-import {jwtDecode} from 'jwt-decode'
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 function Login() {
   // password eye
   const [showpassword, setShowPassword] = useState(false);
+  // password min charecter
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   //  state to store user details
   const [userDetails, setUserDetails] = useState({
@@ -74,36 +77,39 @@ function Login() {
 
   // google login
   const handleGoogleLogin = async (credentialResponse) => {
-    const details = jwtDecode(credentialResponse.credential)
+    const details = jwtDecode(credentialResponse.credential);
     console.log(details);
 
-    const result = await googleLoginApi({username:details.name, email:details.email, password:"googlepswd",photo:details.picture})
+    const result = await googleLoginApi({
+      username: details.name,
+      email: details.email,
+      password: "googlepswd",
+      photo: details.picture,
+    });
     console.log(result);
-    
-     // 200 status
-      if (result.status == 200) {
-        toast.success("login successfull");
 
-        // session storage
-        sessionStorage.setItem(
-          "existingUser",
-          JSON.stringify(result.data.existingUser)
-        );
-        sessionStorage.setItem("token", result.data.token);
-        setTimeout(() => {
-          if (result.data.existingUser.email == "campfindadmin@gmail.com") {
-            navigate("/admin-dashboard");
-          } else {
-            navigate("/");
-          }
-        }, 2500);
-      }
-      // else
-      else {
-        toast.error("Something went wrong");
-      }
-    
+    // 200 status
+    if (result.status == 200) {
+      toast.success("login successfull");
 
+      // session storage
+      sessionStorage.setItem(
+        "existingUser",
+        JSON.stringify(result.data.existingUser)
+      );
+      sessionStorage.setItem("token", result.data.token);
+      setTimeout(() => {
+        if (result.data.existingUser.email == "campfindadmin@gmail.com") {
+          navigate("/admin-dashboard");
+        } else {
+          navigate("/");
+        }
+      }, 2500);
+    }
+    // else
+    else {
+      toast.error("Something went wrong");
+    }
   };
   return (
     <>
@@ -137,7 +143,17 @@ function Login() {
                   <FaEnvelope className="text-gray-500 mr-2" />
                   <input
                     onChange={(e) => {
-                      setUserDetails({ ...userDetails, email: e.target.value });
+                      setUserDetails({ ...userDetails, email: e.target.value }); 
+                      const emailExp = /^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/
+
+                      if (
+                        e.target.value.length > 0 &&
+                        !emailExp.test(e.target.value)
+                      ) {
+                        setEmailError("Enter a valid email address");
+                      } else {
+                        setEmailError("");
+                      }
                     }}
                     value={userDetails.email}
                     type="text"
@@ -145,6 +161,9 @@ function Login() {
                     className="outline-none "
                   />
                 </div>
+                 {emailError && (
+                  <p className="text-red-500 text-sm mt-1 ml-2">{emailError}</p>
+                )}
                 <div className="flex items-center border rounded px-3 py-2 overflow-hidden">
                   <FaLock className="text-gray-500 mr-2" />
                   <input
@@ -153,6 +172,13 @@ function Login() {
                         ...userDetails,
                         password: e.target.value,
                       });
+                      if (e.target.value.length < 6) {
+                        setPasswordError(
+                          "Password must be at least 6 characters long"
+                        );
+                      } else {
+                        setPasswordError("");
+                      }
                     }}
                     value={userDetails.password}
                     type={showpassword ? "text" : "password"}
@@ -165,6 +191,11 @@ function Login() {
                     className=" text-gray-500 "
                   />
                 </div>
+                {passwordError && (
+                  <p className="text-red-500 text-sm mt-1 ml-2">
+                    {passwordError}
+                  </p>
+                )}
                 <p className="text-right text-sm text-gray-500 cursor-pointer hover:underline">
                   Forgot password?
                 </p>
@@ -184,16 +215,15 @@ function Login() {
 
               <div className="flex justify-center w-full mt-3 overflow-hidden">
                 <GoogleLogin
-                width={500}
+                  width={500}
                   onSuccess={(credentialResponse) => {
                     console.log(credentialResponse);
-                    handleGoogleLogin(credentialResponse)
+                    handleGoogleLogin(credentialResponse);
                   }}
                   onError={() => {
                     toast.error("Login Failed");
                   }}
                 />
-                
               </div>
             </div>
           </div>
