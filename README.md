@@ -1,12 +1,49 @@
-# React + Vite
+````markdown name=README.md
+# 🏕️ CampFind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Find Your Perfect Camping Escape**
 
-Currently, two official plugins are available:
+Fuel your wanderlust with the perfect campsite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌟 Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[CampFind](https://campfind-frontend.vercel.app/) is a full-stack camp booking and hosting platform.  
+Users can explore, wishlist, review, and book camping destinations with availability checks.  
+You can also host and manage your own camping spot listings. All new listings are reviewed and approved by an admin—**only approved camps are shown on the platform** for booking and discovery.
+
+**Key Features:**
+- User authentication
+- Explore & book campsites with availability
+- Wishlist and review system
+- Host and manage your own camping spots
+- **Admin dashboard for camp approval**
+- Interactive blog section
+- Secure Stripe payment integration
+
+---
+
+## 🚀 Tech Stack
+
+- **Frontend:** React, Tailwind CSS, Framer Motion, Context API, Axios
+- **Backend:** Node.js, Express, MongoDB, Multer, JWT
+- **Payments:** Stripe
+
+---
+
+## ✨ Features
+
+- **Explore & Book:** Discover camping destinations and check real-time availability
+- **Wishlist & Reviews:** Save favorites and share experiences
+- **Host & Manage Listings:** List and manage your own campsite (pending admin approval)
+- **Admin Approval:** Admins approve camps before they appear on the platform
+- **Interactive Blog:** Tips, guides, and stories for campers
+- **Secure Payments:** Stripe integration for hassle-free booking
+
+---
+
+## 🔗 Live Demo
+
+Check out the live site: [campfind-frontend.vercel.app](https://campfind-frontend.vercel.app/)
+````
