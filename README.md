@@ -1,4 +1,3 @@
-````markdown name=README.md
 # 🏕️ CampFind
 
 **Find Your Perfect Camping Escape**
@@ -46,4 +45,3 @@ You can also host and manage your own camping spot listings. All new listings ar
 ## 🔗 Live Demo
 
 Check out the live site: [campfind-frontend.vercel.app](https://campfind-frontend.vercel.app/)
-````
